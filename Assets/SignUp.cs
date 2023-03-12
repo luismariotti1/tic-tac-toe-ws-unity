@@ -11,10 +11,14 @@ public class SignUp : MonoBehaviour
     [SerializeField] private TMP_InputField email;
     [SerializeField] private TMP_InputField username;
     [SerializeField] private TMP_InputField password;
-    [SerializeField] private GameObject button;
+    [SerializeField] private GameObject signUpButton;
+    [SerializeField] private GameObject signInButton;
+    [SerializeField] private GameObject signInForm;
+    
     private void Start()
     {
-        button.GetComponent<Button>().onClick.AddListener(() => { StartCoroutine(Registration()); });
+        signUpButton.GetComponent<Button>().onClick.AddListener(() => { StartCoroutine(Registration()); });
+        signInButton.GetComponent<Button>().onClick.AddListener(ChangeForm);
     }
 
     private IEnumerator Registration()
@@ -41,6 +45,12 @@ public class SignUp : MonoBehaviour
             // show the error message
             Debug.Log(uwr.error);
         }
+    }
+    
+    private void ChangeForm()
+    {
+        gameObject.SetActive(false);
+        signInForm.SetActive(true);
     }
 }
 

@@ -11,13 +11,14 @@ public class SignIn : MonoBehaviour
 {
     [SerializeField] private TMP_InputField username;
     [SerializeField] private TMP_InputField password;
-    [SerializeField] private GameObject button;
-    [SerializeField] private GameObject authButton;
+    [SerializeField] private GameObject signInButton;
+    [SerializeField] private GameObject signUpButton;
+    [SerializeField] private GameObject singUpForm;
 
     void Start()
     {
-        button.GetComponent<Button>().onClick.AddListener(() => { StartCoroutine(SignInRequest()); });
-        authButton.GetComponent<Button>().onClick.AddListener(() => { StartCoroutine(AuthRequest()); });
+        signInButton.GetComponent<Button>().onClick.AddListener(() => { StartCoroutine(SignInRequest()); });
+        signUpButton.GetComponent<Button>().onClick.AddListener(ChangeForm);
     }
 
     private IEnumerator SignInRequest()
@@ -51,34 +52,11 @@ public class SignIn : MonoBehaviour
             }
         }
     }
-
-    private IEnumerator AuthRequest()
+    
+    private void ChangeForm()
     {
-        var uwr = new UnityWebRequest("http://localhost", "GET");
-
-        uwr.downloadHandler = new DownloadHandlerBuffer();
-
-        // get the access token from the player prefs
-        var token = PlayerPrefs.GetString("access_token");
-        Debug.Log(token);
-
-        // add as bearer token
-        token = "Bearer " + token;
-        uwr.SetRequestHeader("Authorization", token);
-
-        using (uwr)
-        {
-            yield return uwr.SendWebRequest();
-
-            if (uwr.result == UnityWebRequest.Result.Success)
-            {
-                Debug.Log(uwr.downloadHandler.text);
-            }
-            else
-            {
-                Debug.Log(uwr.error);
-            }
-        }
+        gameObject.SetActive(false);
+        singUpForm.SetActive(true);
     }
 }
 
