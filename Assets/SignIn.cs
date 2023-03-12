@@ -5,6 +5,7 @@ using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SignIn : MonoBehaviour
@@ -14,6 +15,7 @@ public class SignIn : MonoBehaviour
     [SerializeField] private GameObject signInButton;
     [SerializeField] private GameObject signUpButton;
     [SerializeField] private GameObject singUpForm;
+    [SerializeField] private Scene menuScene;
 
     void Start()
     {
@@ -44,6 +46,9 @@ public class SignIn : MonoBehaviour
                 PlayerPrefs.SetString("access_token", response.access_token);
                 Debug.Log("success");
                 Debug.Log(response.access_token);
+                
+                // change to the menu scene
+                SceneManager.LoadScene("Menu");
             }
             else
             {

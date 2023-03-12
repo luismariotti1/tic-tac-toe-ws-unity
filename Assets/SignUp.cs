@@ -14,7 +14,7 @@ public class SignUp : MonoBehaviour
     [SerializeField] private GameObject signUpButton;
     [SerializeField] private GameObject signInButton;
     [SerializeField] private GameObject signInForm;
-    
+
     private void Start()
     {
         signUpButton.GetComponent<Button>().onClick.AddListener(() => { StartCoroutine(Registration()); });
