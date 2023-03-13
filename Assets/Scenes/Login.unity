@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: singUpButton
       value: 
       objectReference: {fileID: 222321816}
+    - target: {fileID: 915987007785054625, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
+      propertyPath: gameConnection
+      value: 
+      objectReference: {fileID: 5364426444132522546, guid: 6a4cbc3a4c1864eb9bf20bfaae418752, type: 3}
     - target: {fileID: 915987007785054626, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

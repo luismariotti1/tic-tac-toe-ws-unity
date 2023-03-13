@@ -15,7 +15,7 @@ public class SignIn : MonoBehaviour
     [SerializeField] private GameObject signInButton;
     [SerializeField] private GameObject signUpButton;
     [SerializeField] private GameObject singUpForm;
-    [SerializeField] private Scene menuScene;
+    // [SerializeField] private GameObject gameConnection;
 
     void Start()
     {
@@ -43,11 +43,12 @@ public class SignIn : MonoBehaviour
             {
                 // get the access token from the response
                 var response = JsonUtility.FromJson<SignInResponse>(uwr.downloadHandler.text);
+
                 PlayerPrefs.SetString("access_token", response.access_token);
-                Debug.Log("success");
-                Debug.Log(response.access_token);
+                PlayerPrefs.SetString("user_id", response.user.id);
+                PlayerPrefs.SetString("username", response.user.username);
+                PlayerPrefs.SetString("email", response.user.email);
                 
-                // change to the menu scene
                 SceneManager.LoadScene("Menu");
             }
             else
@@ -57,7 +58,7 @@ public class SignIn : MonoBehaviour
             }
         }
     }
-    
+
     private void ChangeForm()
     {
         gameObject.SetActive(false);
@@ -69,7 +70,7 @@ internal class SignInData
 {
     public string username;
     public string password;
-    
+
     // constructor
     public SignInData(string username, string password)
     {
@@ -78,7 +79,17 @@ internal class SignInData
     }
 }
 
-internal class SignInResponse
+[System.Serializable]
+public class SignInResponse
 {
     public string access_token;
+    public User user;
+}
+
+[System.Serializable]
+public class User
+{
+    public string id;
+    public string email;
+    public string username;
 }

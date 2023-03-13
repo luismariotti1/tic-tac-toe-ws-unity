@@ -10,7 +10,7 @@ public class SocketIOConnection : MonoBehaviour
 {
     // create SocketIO client
     public SocketIOUnity Socket { get; private set; }
-    private string url = "http://localhost";
+    private string url = "http://localhost/game";
     
     public static SocketIOConnection Instance;
     public bool IsConnected { get; private set; }
@@ -49,21 +49,11 @@ public class SocketIOConnection : MonoBehaviour
 
         Socket.OnConnected += (sender, e) =>
         {
+            Debug.Log("Connected");
             IsConnected = true;
         };
 
         Debug.Log("Connecting...");
         Socket.Connect();
     }
-    
-    // private void GetBoard()
-    // {
-    //     Socket.Emit("getBoard");
-    //     Socket.On("getBoard", (response) =>
-    //     {
-    //         Debug.Log(response);
-    //         Debug.Log(response.GetValue()[0][0]);
-    //     });
-    // }
-
 }
