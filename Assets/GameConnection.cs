@@ -50,9 +50,4 @@ public class GameConnection : MonoBehaviour
         
         Socket.Connect();
     }
-    
-    private void Update()
-    {
-        
-    }
 }
