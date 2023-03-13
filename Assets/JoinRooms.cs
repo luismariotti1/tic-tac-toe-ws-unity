@@ -26,6 +26,13 @@ public class JoinRooms : MonoBehaviour
             findGameButton.SetActive(false);
             loading.SetActive(true);
         });
+        
+        _connection.Socket.OnUnityThread("startGame", (response) =>
+        {
+            Debug.Log("here");
+            DontDestroyOnLoad(_connection);
+            SceneManager.LoadScene("Game");
+        });
     }
 
     // join room
