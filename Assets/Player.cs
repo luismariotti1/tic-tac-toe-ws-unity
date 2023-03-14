@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public string Room { get; set; } = "";
     public string Marker { get; set; } = "";
     
     // Start is called before the first frame update

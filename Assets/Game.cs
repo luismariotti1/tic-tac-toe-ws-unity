@@ -8,14 +8,14 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject gridSpacesHolder;
     [SerializeField] private GameObject winnerPopup;
     private List<List<GridSpace>> _gridSpaces = new List<List<GridSpace>>();
-    private GameConnection _gameConnection;
+    private SocketIOConnection _connection;
 
     void Start()
     {
-        _gameConnection = GameConnection.Instance;
+        _connection = SocketIOConnection.Instance;
         CreateGridSpaces();
-        _gameConnection.Socket.Emit("getBoard", "Room1");
-        _gameConnection.Socket.OnUnityThread("updateBoard", (response) =>
+        _connection.Socket.Emit("getBoard", "Room1");
+        _connection.Socket.OnUnityThread("updateBoard", (response) =>
         {
             var data = response.GetValue();
             for (int i = 0; i < 3; i++)
@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
             }
         });
 
-        _gameConnection.Socket.OnUnityThread("winner", (response) =>
+        _connection.Socket.OnUnityThread("winner", (response) =>
         {
             var data = response.GetValue();
             winnerPopup.SetActive(true);
@@ -37,7 +37,7 @@ public class Game : MonoBehaviour
             popUpText.text = text;
         });
         
-        _gameConnection.Socket.OnUnityThread("restarted", (response) =>
+        _connection.Socket.OnUnityThread("restarted", (response) =>
         {
             winnerPopup.SetActive(false);
         });
