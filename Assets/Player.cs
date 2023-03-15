@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public string Room { get; set; } = "";
-    public string Marker { get; set; } = "";
+    public string marker = "";
+    public string room = "";
     
     // Start is called before the first frame update
     void Start()

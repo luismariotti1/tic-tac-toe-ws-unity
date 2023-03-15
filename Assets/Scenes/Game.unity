@@ -1114,6 +1114,7 @@ MonoBehaviour:
   gridSpacePrefab: {fileID: 1228042098033208773, guid: 535f929fc37ca42eb8d73d716163f9e4, type: 3}
   gridSpacesHolder: {fileID: 4500851684016766549}
   winnerPopup: {fileID: 1932715949}
+  player: {fileID: 3957155487993318872, guid: 1762502e6ec024984b847caefdbe9792, type: 3}
 --- !u!222 &8217201014661188700
 CanvasRenderer:
   m_ObjectHideFlags: 0

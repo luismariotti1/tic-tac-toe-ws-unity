@@ -8,12 +8,12 @@ public class GridSpace : MonoBehaviour
     public int Row;
     public int Column;
     public string Mark { get; set; }
-    private GameConnection _gameConnection;
+    private SocketIOConnection _connection;
     private GameObject _player;
 
     void Start()
     {
-        _gameConnection = GameConnection.Instance;
+        _connection = SocketIOConnection.Instance;
         GetComponentInParent<Button>().onClick.AddListener(OnClick);
     }
 
@@ -33,21 +33,24 @@ public class GridSpace : MonoBehaviour
     {
         _player = GameObject.FindWithTag("Player");
         var playerScript = _player.GetComponent<Player>();
-        _gameConnection.Socket.Emit("mark", JsonUtility.ToJson(
-            new MoveMessage(Row, Column, playerScript.Marker)));
+        _connection.Socket.Emit("mark", JsonUtility.ToJson(
+            new MoveMessage(Row, Column, playerScript.marker, playerScript.room)));
     }
 }
 
+[System.Serializable]
 public class MoveMessage
 {
     public int Row;
     public int Column;
     public string Marker;
+    public string Room;
 
-    public MoveMessage(int row, int column, string marker)
+    public MoveMessage(int row, int column, string marker, string room)
     {
         Row = row;
         Column = column;
         Marker = marker;
+        Room = room;
     }
 }

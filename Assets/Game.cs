@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,17 +8,33 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject gridSpacePrefab;
     [SerializeField] private GameObject gridSpacesHolder;
     [SerializeField] private GameObject winnerPopup;
+    [SerializeField] private GameObject player;
     private List<List<GridSpace>> _gridSpaces = new List<List<GridSpace>>();
     private SocketIOConnection _connection;
+    private string _room;
 
     void Start()
     {
         _connection = SocketIOConnection.Instance;
         CreateGridSpaces();
-        _connection.Socket.Emit("getBoard", "Room1");
+
+        _connection.Socket.Emit("getPlayerData", PlayerPrefs.GetString("user_id"));
+        _connection.Socket.OnUnityThread("playerData", (response) =>
+        {
+            var data = response.GetValue().ToString();
+            var json = JsonUtility.FromJson<PlayerData>(data);
+            
+            Instantiate(player);
+            var playerScript = player.GetComponent<Player>();
+            playerScript.marker = json.marker;
+            playerScript.room = json.room;
+        });
+
+        // _connection.Socket.Emit("getBoard", _room);
         _connection.Socket.OnUnityThread("updateBoard", (response) =>
         {
             var data = response.GetValue();
+            // Debug.Log(data);
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -36,11 +53,8 @@ public class Game : MonoBehaviour
             var text = data + "\n" + "won the game";
             popUpText.text = text;
         });
-        
-        _connection.Socket.OnUnityThread("restarted", (response) =>
-        {
-            winnerPopup.SetActive(false);
-        });
+
+        _connection.Socket.OnUnityThread("restarted", (response) => { winnerPopup.SetActive(false); });
     }
 
     private void CreateGridSpaces()
@@ -57,6 +71,15 @@ public class Game : MonoBehaviour
             }
         }
     }
+}
+
+[System.Serializable]
+public class PlayerData
+{
+    public string id;
+    public string room;
+    public string marker;
+    public string turn;
 }
 
 internal class GridSpaceState

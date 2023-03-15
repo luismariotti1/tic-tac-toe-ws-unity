@@ -9,7 +9,6 @@ public class JoinRooms : MonoBehaviour
     [SerializeField] private GameObject findGameButton;
     [SerializeField] private GameObject showUserName;
     [SerializeField] private GameObject loading;
-    [SerializeField] private GameObject player;
     private SocketIOConnection _connection;
   
     // Start is called before the first frame update
@@ -24,13 +23,7 @@ public class JoinRooms : MonoBehaviour
 
         _connection.Socket.OnUnityThread("joinedRoom", (response) =>
         {
-            var data = response.GetValue().ToString();
-            var json = JsonUtility.FromJson<JoinedRoom>(data);
-
-            Instantiate(player);
-            player.GetComponent<Player>().Marker = json.marker;
-            player.GetComponent<Player>().Room = json.room;
-            
+            Debug.Log("joined room");
             findGameButton.SetActive(false);
             loading.SetActive(true);
         });
@@ -39,7 +32,6 @@ public class JoinRooms : MonoBehaviour
         {
             Debug.Log("here");
             DontDestroyOnLoad(_connection);
-            DontDestroyOnLoad(player);
             SceneManager.LoadScene("Game");
         });
     }
