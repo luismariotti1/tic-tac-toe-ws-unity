@@ -43,10 +43,10 @@ public class Game : MonoBehaviour
 
         _connection.Socket.OnUnityThread("winner", (response) =>
         {
-            var data = response.GetValue();
+            var data = response.GetValue().ToString();
             winnerPopup.SetActive(true);
+            var text = data == "tie" ? "deu velha" : data + "\n" + "won the game";
             var popUpText = winnerPopup.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
-            var text = data + "\n" + "won the game";
             popUpText.text = text;
         });
 
