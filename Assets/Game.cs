@@ -23,11 +23,10 @@ public class Game : MonoBehaviour
             var data = response.GetValue().ToString();
             var json = JsonUtility.FromJson<PlayerData>(data);
 
-            GameManager.Instance.player = new Player(json.marker, json.room);
+            GameManager.Instance.player = new Player(json.marker, json.room, json.isTurn);
             CreateGridSpaces();
         });
-
-        // _connection.Socket.Emit("getBoard", this.player.GetComponent<Player>().room);
+        
         _connection.Socket.OnUnityThread("updateBoard", (response) =>
         {
             var data = response.GetValue();
@@ -48,6 +47,14 @@ public class Game : MonoBehaviour
             var text = data == "tie" ? "deu velha" : data + "\n" + "won the game";
             var popUpText = winnerPopup.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
             popUpText.text = text;
+        });
+        
+        // turn
+        _connection.Socket.OnUnityThread("turn", (response) =>
+        {
+            var data = response.GetValue().ToString();
+            var player = GameManager.Instance.player;
+            player.isTurn = data == "True";
         });
 
         _connection.Socket.OnUnityThread("restarted", (response) => { winnerPopup.SetActive(false); });
@@ -75,10 +82,11 @@ public class PlayerData
     public string id;
     public string room;
     public string marker;
-    public string turn;
+    public bool isTurn;
 }
 
-internal class GridSpaceState
+[System.Serializable]
+public class GridSpaceState
 {
     public int Column;
     public int Row;

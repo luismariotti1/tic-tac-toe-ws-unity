@@ -32,8 +32,10 @@ public class GridSpace : MonoBehaviour
     private void OnClick()
     {
         var gameManager = GameManager.Instance;
+        var player = gameManager.player;
+        if (!player.isTurn) return;
         _connection.Socket.Emit("mark", JsonUtility.ToJson(
-            new MoveMessage(Row, Column, gameManager.player.marker, gameManager.player.room)));
+            new MoveMessage(Row, Column, player.marker, player.room)));
     }
 }
 
