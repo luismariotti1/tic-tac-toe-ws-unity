@@ -5,7 +5,7 @@ public class PlayAgain : MonoBehaviour
 {
     public void RestartGame()
     {
-        var gameConnection = GameConnection.Instance;
-        gameConnection.Socket.Emit("restart", "Room1");
+        var connection = SocketIOConnection.Instance;
+        connection.Socket.Emit("restart", GameManager.Instance.player.room);
     }
 }

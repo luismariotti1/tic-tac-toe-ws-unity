@@ -50,7 +50,7 @@ public class Game : MonoBehaviour
             popUpText.text = text;
         });
 
-        // _connection.Socket.OnUnityThread("restarted", (response) => { winnerPopup.SetActive(false); });
+        _connection.Socket.OnUnityThread("restarted", (response) => { winnerPopup.SetActive(false); });
     }
 
     private void CreateGridSpaces()
