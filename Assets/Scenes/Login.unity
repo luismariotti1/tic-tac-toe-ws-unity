@@ -134,22 +134,6 @@ PrefabInstance:
       propertyPath: singUpForm
       value: 
       objectReference: {fileID: 1749340787}
-    - target: {fileID: 915987007785054625, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-      propertyPath: signInButton
-      value: 
-      objectReference: {fileID: 1666873229}
-    - target: {fileID: 915987007785054625, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-      propertyPath: signUpButton
-      value: 
-      objectReference: {fileID: 222321816}
-    - target: {fileID: 915987007785054625, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-      propertyPath: singUpButton
-      value: 
-      objectReference: {fileID: 222321816}
-    - target: {fileID: 915987007785054625, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-      propertyPath: gameConnection
-      value: 
-      objectReference: {fileID: 5364426444132522546, guid: 6a4cbc3a4c1864eb9bf20bfaae418752, type: 3}
     - target: {fileID: 915987007785054626, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -238,26 +222,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SignIn
       objectReference: {fileID: 0}
-    - target: {fileID: 915987007785054627, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 915987008903915466, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-      propertyPath: m_Name
-      value: SignInButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 3369185971056220306, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3369185971056220306, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -140
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795875051936625911, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-      propertyPath: m_Name
-      value: SignUpButton
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
 --- !u!224 &43518386 stripped
@@ -332,16 +296,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &166033611 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6632131583936506790, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
-  m_PrefabInstance: {fileID: 1756754398}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &222321816 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7795875051936625911, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-  m_PrefabInstance: {fileID: 43518385}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,19 +482,9 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1025027170 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1025027170, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
-  m_PrefabInstance: {fileID: 1756754398}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1197366199 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 915987007785054627, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
-  m_PrefabInstance: {fileID: 43518385}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1666873229 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 915987008903915466, guid: 9dc7fd835d02543078781a009aceddcb, type: 3}
   m_PrefabInstance: {fileID: 43518385}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1749340787 stripped
@@ -555,26 +499,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 616741126}
     m_Modifications:
-    - target: {fileID: 1025027170, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
-      propertyPath: m_Name
-      value: SignIn
-      objectReference: {fileID: 0}
     - target: {fileID: 6632131583092461970, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
       propertyPath: signInForm
       value: 
       objectReference: {fileID: 1197366199}
-    - target: {fileID: 6632131583092461970, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
-      propertyPath: signInButton
-      value: 
-      objectReference: {fileID: 1025027170}
-    - target: {fileID: 6632131583092461970, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
-      propertyPath: signUpButton
-      value: 
-      objectReference: {fileID: 166033611}
-    - target: {fileID: 6632131583092461970, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
-      propertyPath: singUpButton
-      value: 
-      objectReference: {fileID: 166033611}
     - target: {fileID: 6632131583092461972, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
       propertyPath: m_Name
       value: SignUp
@@ -666,14 +594,6 @@ PrefabInstance:
     - target: {fileID: 6632131583092461973, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6632131583920456021, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -285
-      objectReference: {fileID: 0}
-    - target: {fileID: 6632131583936506790, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}
-      propertyPath: m_Name
-      value: SignUpButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 083fedee6050648d7a4e6ffe997768fe, type: 3}

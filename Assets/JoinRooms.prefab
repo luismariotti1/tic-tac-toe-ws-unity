@@ -189,6 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   findGameButton: {fileID: 3269688882824895916}
   showUserName: {fileID: 1811826784}
+  loading: {fileID: 4973430937972791360}
+  connection: {fileID: 6967489874773842677, guid: 9f779a03dd0a4490ab3fe4ee9ea23db4, type: 3}
 --- !u!1 &3269688882403007806
 GameObject:
   m_ObjectHideFlags: 0

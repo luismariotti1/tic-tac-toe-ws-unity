@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 1025027173}
   - component: {fileID: 1025027172}
   m_Layer: 5
-  m_Name: SingIn
+  m_Name: SignIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -887,7 +887,9 @@ MonoBehaviour:
   email: {fileID: 6632131583997542647}
   username: {fileID: 6632131583920456018}
   password: {fileID: 6632131581963772467}
-  button: {fileID: 6632131583936506790}
+  signUpButton: {fileID: 6632131583936506790}
+  signInButton: {fileID: 1025027170}
+  signInForm: {fileID: 0}
 --- !u!1 &6632131583125964907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,7 +1562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -280}
+  m_AnchoredPosition: {x: 0, y: -285}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6632131583920456016
@@ -1847,7 +1849,7 @@ GameObject:
   - component: {fileID: 6632131583936506789}
   - component: {fileID: 6632131583936506788}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SignUpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

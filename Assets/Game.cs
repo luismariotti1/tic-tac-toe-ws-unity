@@ -28,13 +28,14 @@ public class Game : MonoBehaviour
             var playerScript = player.GetComponent<Player>();
             playerScript.marker = json.marker;
             playerScript.room = json.room;
+            Debug.Log(playerScript.room);
         });
 
-        // _connection.Socket.Emit("getBoard", _room);
+        // _connection.Socket.Emit("getBoard", this.player.GetComponent<Player>().room);
         _connection.Socket.OnUnityThread("updateBoard", (response) =>
         {
             var data = response.GetValue();
-            // Debug.Log(data);
+            Debug.Log(data);
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
