@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -8,34 +9,28 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject gridSpacePrefab;
     [SerializeField] private GameObject gridSpacesHolder;
     [SerializeField] private GameObject winnerPopup;
-    [SerializeField] private GameObject player;
     private List<List<GridSpace>> _gridSpaces = new List<List<GridSpace>>();
     private SocketIOConnection _connection;
     private string _room;
+    private bool _playerReady;
 
     void Start()
     {
         _connection = SocketIOConnection.Instance;
-        CreateGridSpaces();
-
         _connection.Socket.Emit("getPlayerData", PlayerPrefs.GetString("user_id"));
         _connection.Socket.OnUnityThread("playerData", (response) =>
         {
             var data = response.GetValue().ToString();
             var json = JsonUtility.FromJson<PlayerData>(data);
-            
-            Instantiate(player);
-            var playerScript = player.GetComponent<Player>();
-            playerScript.marker = json.marker;
-            playerScript.room = json.room;
-            Debug.Log(playerScript.room);
+
+            GameManager.Instance.player = new Player(json.marker, json.room);
+            CreateGridSpaces();
         });
 
         // _connection.Socket.Emit("getBoard", this.player.GetComponent<Player>().room);
         _connection.Socket.OnUnityThread("updateBoard", (response) =>
         {
             var data = response.GetValue();
-            Debug.Log(data);
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -55,7 +50,7 @@ public class Game : MonoBehaviour
             popUpText.text = text;
         });
 
-        _connection.Socket.OnUnityThread("restarted", (response) => { winnerPopup.SetActive(false); });
+        // _connection.Socket.OnUnityThread("restarted", (response) => { winnerPopup.SetActive(false); });
     }
 
     private void CreateGridSpaces()

@@ -8,10 +8,9 @@ using UnityEngine;
 
 public class SocketIOConnection : MonoBehaviour
 {
-    // create SocketIO client
     public SocketIOUnity Socket { get; private set; }
-    private string url = "http://localhost/game";
     public static SocketIOConnection Instance { get; private set; }
+    private const string URL = "http://localhost/game";
 
     private void Awake()
     {
@@ -24,9 +23,9 @@ public class SocketIOConnection : MonoBehaviour
             Instance = this;
         }
 
-        // DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
 
-        var uri = new Uri(url);
+        var uri = new Uri(URL);
         Socket = new SocketIOUnity(uri, new SocketIOOptions
         {
             Query = new Dictionary<string, string>

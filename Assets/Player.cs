@@ -1,21 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Player : MonoBehaviour
+[System.Serializable]
+public class Player
 {
-    public string marker = "";
-    public string room = "";
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string marker;
+    public string room;
 
-    // Update is called once per frame
-    void Update()
+    public Player(string marker, string room)
     {
-        
+        this.marker = marker;
+        this.room = room;
     }
 }

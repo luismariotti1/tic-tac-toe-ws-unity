@@ -31,10 +31,9 @@ public class GridSpace : MonoBehaviour
 
     private void OnClick()
     {
-        _player = GameObject.FindWithTag("Player");
-        var playerScript = _player.GetComponent<Player>();
+        var gameManager = GameManager.Instance;
         _connection.Socket.Emit("mark", JsonUtility.ToJson(
-            new MoveMessage(Row, Column, playerScript.marker, playerScript.room)));
+            new MoveMessage(Row, Column, gameManager.player.marker, gameManager.player.room)));
     }
 }
 
